@@ -1,13 +1,13 @@
 package com.Ironhack.LOTRProject.controller;
 
+import com.Ironhack.LOTRProject.dto.DwarfDTO;
+import com.Ironhack.LOTRProject.dto.ElfDTO;
+import com.Ironhack.LOTRProject.dto.HumanDTO;
 import com.Ironhack.LOTRProject.dto.IndividualDTO;
 import com.Ironhack.LOTRProject.service.IndividualService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/individual")
@@ -17,9 +17,29 @@ public class IndividualController {
     private IndividualService individualService;
 
 
-    @PostMapping("/add")
-    public ResponseEntity<IndividualDTO> addIndividual (@RequestBody IndividualDTO individualDTO){
-        return ResponseEntity.ok(individualService.addIndividual(individualDTO));
+    @PostMapping("/addElf")
+    public ResponseEntity addElf (@RequestBody ElfDTO elfDTO){
+        return ResponseEntity.ok(individualService.addIndividual(elfDTO));
     }
 
+    @PostMapping("/addHuman")
+    public ResponseEntity addHuman (@RequestBody HumanDTO humanDTO){
+        return ResponseEntity.ok(individualService.addIndividual(humanDTO));
+    }
+
+    @PostMapping("/addDwarf")
+    public ResponseEntity addDwarf (@RequestBody DwarfDTO dwarfDTO){
+        return ResponseEntity.ok(individualService.addIndividual(dwarfDTO));
+    }
+
+    @GetMapping ("/all")
+    public ResponseEntity getAll (){
+        return ResponseEntity.ok(individualService.getAll());
+    }
+    //TODO get All elfs, all humans, all dwarfs
+
+    @DeleteMapping ("/{id}")
+    public ResponseEntity deleteIndividual (@PathVariable int id) {
+        return ResponseEntity.ok(individualService.deleteIndividual(id));
+    }
 }

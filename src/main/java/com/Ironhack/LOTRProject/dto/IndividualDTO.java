@@ -6,8 +6,6 @@ import lombok.Data;
 @Data
 public class IndividualDTO {
 
-    private int individual_id;
-
     private String characterName;
 
 
