@@ -3,7 +3,6 @@ package com.Ironhack.LOTRProject.controller;
 import com.Ironhack.LOTRProject.dto.DwarfDTO;
 import com.Ironhack.LOTRProject.dto.ElfDTO;
 import com.Ironhack.LOTRProject.dto.HumanDTO;
-import com.Ironhack.LOTRProject.dto.IndividualDTO;
 import com.Ironhack.LOTRProject.service.IndividualService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
