@@ -1,8 +1,6 @@
 package com.Ironhack.LOTRProject.dto;
 
 import lombok.Data;
-
-import javax.persistence.Column;
 import java.util.Date;
 
 @Data

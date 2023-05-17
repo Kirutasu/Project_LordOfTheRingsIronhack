@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EventsService {
@@ -21,6 +22,7 @@ public class EventsService {
         event.setEventName(eventsDTO.getEventName());
         event.setDateEvent(eventsDTO.getDateEvent());
         eventsRepository.save(event);
+        eventsDTO.setId(event.getId());
         return eventsDTO;
     }
 
@@ -33,5 +35,15 @@ public class EventsService {
     public int deleteEvent (int id) {
         eventsRepository.deleteById(id);
         return id;
+    }
+    public EventsDTO updateEvent (EventsDTO eventsDTO) {
+        if (eventsRepository.findById(eventsDTO.getId()).isPresent()) {
+            Events events = eventsRepository.findById(eventsDTO.getId()).get();
+            events.setEventType(eventsDTO.getEventType());
+            events.setEventName(eventsDTO.getEventName());
+            events.setDateEvent(eventsDTO.getDateEvent());
+            eventsRepository.save(events);
+        }
+        return eventsDTO;
     }
 }
