@@ -72,6 +72,24 @@ public class IndividualService {
         return lista;
     }
 
+    public List getAllElfs () {
+        List lista = new ArrayList();
+        lista.addAll(elfRepository.findAll());
+        return lista;
+    }
+
+    public List getAllHumans () {
+        List lista = new ArrayList();
+        lista.addAll(humanRepository.findAll());
+        return lista;
+    }
+
+    public List getAllDwarfs () {
+        List lista = new ArrayList();
+        lista.addAll(dwarfRepository.findAll());
+        return lista;
+    }
+
     public int deleteIndividual (int id) {
         individualRepository.deleteById(id);
         return id;

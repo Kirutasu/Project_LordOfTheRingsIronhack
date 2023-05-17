@@ -37,6 +37,21 @@ public class IndividualController {
     }
     //TODO get All elfs, all humans, all dwarfs
 
+    @GetMapping ("/allElfs")
+    public ResponseEntity getAllElfs (){
+        return ResponseEntity.ok(individualService.getAllElfs());
+    }
+
+    @GetMapping ("/allHumans")
+    public ResponseEntity getAllHuman (){
+        return ResponseEntity.ok(individualService.getAllHumans());
+    }
+
+    @GetMapping ("/allDwarfs")
+    public ResponseEntity getAllDwarfs (){
+        return ResponseEntity.ok(individualService.getAllDwarfs());
+    }
+
     @DeleteMapping ("/{id}")
     public ResponseEntity deleteIndividual (@PathVariable int id) {
         return ResponseEntity.ok(individualService.deleteIndividual(id));

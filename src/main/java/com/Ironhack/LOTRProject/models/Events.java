@@ -2,6 +2,9 @@ package com.Ironhack.LOTRProject.models;
 
 import lombok.Data;
 
+import javax.persistence.Column;
+import java.util.Date;
+
 @Data
 public class Events {
 
@@ -9,5 +12,8 @@ public class Events {
 
     private String eventType;
 
+    private String eventName;
+
+    private Date dateEvent;
 
 }
