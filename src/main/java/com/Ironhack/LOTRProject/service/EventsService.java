@@ -46,4 +46,21 @@ public class EventsService {
         }
         return eventsDTO;
     }
+
+    public EventsDTO patchEventName (int id, String eventName) {
+        Events event = eventsRepository.findById(id).get();
+        if (eventsRepository.findById(id).isPresent()) {
+            event.setEventName(eventName);
+            eventsRepository.save(event);
+
+            EventsDTO eventDto = new EventsDTO();
+            eventDto.setId(event.getId());
+            eventDto.setEventName(event.getEventName());
+
+            return eventDto;
+
+        } else {
+            return null;
+        } // TODO REVISAR PORQUE XD no null? eventDTO?
+    }
 }

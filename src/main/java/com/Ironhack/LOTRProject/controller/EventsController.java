@@ -31,15 +31,11 @@ public class EventsController {
     public ResponseEntity deleteEvent(@PathVariable int id) {
         return ResponseEntity.ok(eventService.deleteEvent(id));
     }
-/*
 
-
-    @PatchMapping ("/doctors/department/{employeeId}/{department}")
-    public ResponseEntity<Optional<Employee>> patchDoctorDepartment (@PathVariable int employeeId, @PathVariable String department) {
-        return ResponseEntity.ok(employeeService.patchDoctorDepartment(employeeId, department));
+    @PatchMapping ("/patchEvent/eventName/{id}/{eventName}")
+    public ResponseEntity<EventsDTO> patchEventName (@PathVariable int id, @PathVariable String eventName) {
+        return ResponseEntity.ok(eventService.patchEventName(id, eventName));
     }
-
- */
 
     @PutMapping("/updateEvent")
     public ResponseEntity<EventsDTO> updateEvent(@RequestBody EventsDTO eventsDTO) {
