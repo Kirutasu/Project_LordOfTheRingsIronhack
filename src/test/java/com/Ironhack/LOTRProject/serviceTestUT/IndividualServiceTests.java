@@ -50,7 +50,7 @@ public class IndividualServiceTests {
         enano1.setMiner(true);
         Human human1 = new Human ();
         human1.setCharacterName("Aragorn");
-        human1.setRace("Montaraz");
+        human1.setRaceSpecialization(RaceSpecialization.TRADE_MASTER);
         human1.setKingdom("Gondor");
         human1.setLineage("Dûnadan");
         Elf elfo1 = new Elf ();
@@ -58,6 +58,7 @@ public class IndividualServiceTests {
         elfo1.setMaxAge(2500);
         elfo1.setKingdom("Bosque prohibido");
         elfo1.setElfRace("Sylvano");
+        elfo1.setRaceSpecialization(RaceSpecialization.MAGIC_RESISTANT);
         listaElf.add(elfo1);
         listaDwarf.add(enano1);
         listaHuman.add(human1);
@@ -70,6 +71,6 @@ public class IndividualServiceTests {
         Mockito.verify(humanRepository, Mockito.times(1)).findAll();
         Mockito.verify(dwarfRepository, Mockito.times(1)).findAll();
     }
-
+//todo algun test mas UT? de event tb?
 
 }

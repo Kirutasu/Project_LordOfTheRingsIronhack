@@ -33,7 +33,7 @@ public class IndividualService {
     public IndividualDTO addIndividual (IndividualDTO individualDTO) {
         Individual individual = new Individual();
         individual.setCharacterName(individualDTO.getCharacterName());
-        //todo esta linea borro? individual = individualRepository.save(individual);
+        //todo esta linea borrar? individual = individualRepository.save(individual);
         if (individualDTO instanceof ElfDTO) {
           ElfDTO elfDto = (ElfDTO) individualDTO;
           Elf elf = new Elf ();
@@ -42,6 +42,7 @@ public class IndividualService {
           elf.setKingdom(elfDto.getKingdom());
           elf.setMaxAge(elfDto.getLongevity());
           elf.setElfRace(elfDto.getElfRace());
+          elf.setRaceSpecialization(elfDto.getRaceSpecialization());
           elfRepository.save(elf);
           return elfDto;
         }
@@ -61,7 +62,7 @@ public class IndividualService {
             Human human = new Human();
             human.setIndividual_id(individual.getIndividual_id());
             human.setCharacterName(individual.getCharacterName());
-            human.setRace(humanDTO.getRace());
+            human.setRaceSpecialization(humanDTO.getRaceSpecialization());
             human.setKingdom(humanDTO.getKingdom());
             human.setLineage(humanDTO.getLineage());
             humanRepository.save(human);

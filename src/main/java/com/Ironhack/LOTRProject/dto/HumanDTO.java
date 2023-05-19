@@ -1,5 +1,6 @@
 package com.Ironhack.LOTRProject.dto;
 
+import com.Ironhack.LOTRProject.enums.RaceSpecialization;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
@@ -9,7 +10,7 @@ import javax.validation.constraints.NotNull;
 public class HumanDTO extends IndividualDTO {
 
     @NotEmpty
-    private String race;
+    private RaceSpecialization raceSpecialization;
     @NotNull
     private String kingdom;
     private String lineage;

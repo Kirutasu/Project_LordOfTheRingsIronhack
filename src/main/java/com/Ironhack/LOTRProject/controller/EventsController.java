@@ -42,7 +42,7 @@ public class EventsController {
     }
 
     @PostMapping ("/addParticipantToEvent")
-    public ResponseEntity<EventsDTO> addElfsToEvent (EventParticipantsDTO eventParticipantsDTO) {
+    public ResponseEntity<EventsDTO> addElfsToEvent (@RequestBody EventParticipantsDTO eventParticipantsDTO) {
         return ResponseEntity.ok(eventService.addElfsToEvent(eventParticipantsDTO));
     }
 

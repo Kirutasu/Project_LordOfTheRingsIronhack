@@ -1,5 +1,6 @@
 package com.Ironhack.LOTRProject.dto;
 
+import com.Ironhack.LOTRProject.enums.RaceSpecialization;
 import lombok.Data;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -16,6 +17,8 @@ public class ElfDTO extends IndividualDTO {
     private int Longevity;
     @NotEmpty
     private String elfRace;
+    @NotEmpty
+    private RaceSpecialization raceSpecialization;
 
 
 

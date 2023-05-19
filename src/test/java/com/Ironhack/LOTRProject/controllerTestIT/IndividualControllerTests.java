@@ -63,7 +63,7 @@ public class IndividualControllerTests {
         dwarfRepository.save(enano1);
         Human human1 = new Human ();
         human1.setCharacterName("Aragorn");
-        human1.setRace("Montaraz");
+        human1.setRaceSpecialization(RaceSpecialization.TRADE_MASTER);
         human1.setKingdom("Gondor");
         human1.setLineage("Dûnadan");
         humanRepository.save(human1);
@@ -72,9 +72,10 @@ public class IndividualControllerTests {
         elfo1.setMaxAge(2500);
         elfo1.setKingdom("Bosque prohibido");
         elfo1.setElfRace("Sylvano");
+        elfo1.setRaceSpecialization(RaceSpecialization.MAGIC_RESISTANT);
         elfRepository.save(elfo1);
     }
-
+// todo Aftereach? todos test juntos peta
     @Test
     public void getAllTest() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/individual/all"))//permite lanzar querys, tipo get o la que sea

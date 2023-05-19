@@ -1,5 +1,6 @@
 package com.Ironhack.LOTRProject.dao;
 
+import com.Ironhack.LOTRProject.enums.RaceSpecialization;
 import lombok.Data;
 import javax.persistence.*;
 
@@ -9,7 +10,7 @@ import javax.persistence.*;
 public class Human extends Individual {
 
     @Column
-    private String race;
+    private RaceSpecialization raceSpecialization;
 
     @Column
     private String kingdom;

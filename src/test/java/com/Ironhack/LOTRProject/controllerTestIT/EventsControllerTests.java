@@ -29,4 +29,6 @@ public class EventsControllerTests {
     public void setup() throws Exception {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
     }
+
+    //todo test de events
 }
