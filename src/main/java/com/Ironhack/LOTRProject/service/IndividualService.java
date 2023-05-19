@@ -7,13 +7,13 @@ import com.Ironhack.LOTRProject.dto.DwarfDTO;
 import com.Ironhack.LOTRProject.dto.ElfDTO;
 import com.Ironhack.LOTRProject.dto.HumanDTO;
 import com.Ironhack.LOTRProject.dto.IndividualDTO;
+import com.Ironhack.LOTRProject.dao.Human;
 import com.Ironhack.LOTRProject.repositories.DwarfRepository;
 import com.Ironhack.LOTRProject.repositories.ElfRepository;
 import com.Ironhack.LOTRProject.repositories.HumanRepository;
 import com.Ironhack.LOTRProject.repositories.IndividualRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,14 +33,14 @@ public class IndividualService {
     public IndividualDTO addIndividual (IndividualDTO individualDTO) {
         Individual individual = new Individual();
         individual.setCharacterName(individualDTO.getCharacterName());
-        //individual = individualRepository.save(individual);
+        //todo esta linea borro? individual = individualRepository.save(individual);
         if (individualDTO instanceof ElfDTO) {
           ElfDTO elfDto = (ElfDTO) individualDTO;
           Elf elf = new Elf ();
           elf.setIndividual_id(individual.getIndividual_id());
           elf.setCharacterName(individual.getCharacterName());
           elf.setKingdom(elfDto.getKingdom());
-          elf.setMaxAge(elfDto.getMaxAge());
+          elf.setMaxAge(elfDto.getLongevity());
           elf.setElfRace(elfDto.getElfRace());
           elfRepository.save(elf);
           return elfDto;
@@ -50,7 +50,7 @@ public class IndividualService {
             Dwarf dwarf = new Dwarf();
             dwarf.setIndividual_id(individual.getIndividual_id());
             dwarf.setCharacterName(individual.getCharacterName());
-            dwarf.setAverageHeight(dwarfDTO.getAverageHeight());
+            dwarf.setRaceSpecialization(dwarfDTO.getRaceSpecialization());
             dwarf.setKingdom(dwarfDTO.getKingdom());
             dwarf.setMiner(dwarfDTO.isMiner());
             dwarfRepository.save(dwarf);
@@ -58,11 +58,18 @@ public class IndividualService {
         }
         else if(individualDTO instanceof HumanDTO) {
             HumanDTO humanDTO = (HumanDTO) individualDTO;
-
+            Human human = new Human();
+            human.setIndividual_id(individual.getIndividual_id());
+            human.setCharacterName(individual.getCharacterName());
+            human.setRace(humanDTO.getRace());
+            human.setKingdom(humanDTO.getKingdom());
+            human.setLineage(humanDTO.getLineage());
+            humanRepository.save(human);
+            return humanDTO;
         }
-
         return individualDTO;
     }
+    // todo human
 
     public List getAll () {
         List lista = new ArrayList();

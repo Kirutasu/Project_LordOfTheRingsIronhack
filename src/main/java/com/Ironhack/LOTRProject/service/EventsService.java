@@ -1,20 +1,26 @@
 package com.Ironhack.LOTRProject.service;
 
+import com.Ironhack.LOTRProject.dao.Elf;
+import com.Ironhack.LOTRProject.dto.EventParticipantsDTO;
 import com.Ironhack.LOTRProject.dto.EventsDTO;
 import com.Ironhack.LOTRProject.dao.Events;
+import com.Ironhack.LOTRProject.exceptions.EventNotFoundException;
+import com.Ironhack.LOTRProject.repositories.ElfRepository;
 import com.Ironhack.LOTRProject.repositories.EventsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EventsService {
 
     @Autowired
     private EventsRepository eventsRepository;
+
+    @Autowired
+    private ElfRepository elfRepository;
 
     public EventsDTO addEvent (EventsDTO eventsDTO) {
         Events event = new Events();
@@ -47,20 +53,39 @@ public class EventsService {
         return eventsDTO;
     }
 
-    public EventsDTO patchEventName (int id, String eventName) {
-        Events event = eventsRepository.findById(id).get();
+    public EventsDTO patchEventName (int id, String eventName) throws EventNotFoundException {
         if (eventsRepository.findById(id).isPresent()) {
+            Events event = eventsRepository.findById(id).get();
             event.setEventName(eventName);
             eventsRepository.save(event);
-
             EventsDTO eventDto = new EventsDTO();
             eventDto.setId(event.getId());
             eventDto.setEventName(event.getEventName());
-
+            eventDto.setEventType(event.getEventType());
+            eventDto.setDateEvent(event.getDateEvent());
             return eventDto;
-
         } else {
-            return null;
-        } // TODO REVISAR PORQUE XD no null? eventDTO?
+            throw new EventNotFoundException();
+        }
     }
+
+    public EventsDTO addElfsToEvent (EventParticipantsDTO eventParticipantsDTO) {
+        if (eventsRepository.findById(eventParticipantsDTO.getId_event()).isPresent()) {
+            Events eventOnList = eventsRepository.findById(eventParticipantsDTO.getId_event()).get();
+            if (elfRepository.findById(eventParticipantsDTO.getId_individual()).isPresent()) {
+                Elf elfOnList = elfRepository.findById(eventParticipantsDTO.getId_individual()).get();
+                eventOnList.getParticipants().add(elfOnList);
+                eventsRepository.save(eventOnList);
+                EventsDTO eventsDTOOnList = new EventsDTO();
+                eventsDTOOnList.setId(eventOnList.getId());
+                eventsDTOOnList.setEventType(eventOnList.getEventType());
+                eventsDTOOnList.setEventName(eventOnList.getEventName());
+                eventsDTOOnList.setDateEvent(eventOnList.getDateEvent());
+                eventsDTOOnList.setParticipants(eventOnList.getParticipants());
+                return eventsDTOOnList;
+            }
+        }
+        return null;
+    }
+    // todo haz para dwarf y para Human
 }

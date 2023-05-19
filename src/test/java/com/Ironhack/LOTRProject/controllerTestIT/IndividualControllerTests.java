@@ -4,6 +4,7 @@ import com.Ironhack.LOTRProject.dao.Dwarf;
 import com.Ironhack.LOTRProject.dao.Human;
 import com.Ironhack.LOTRProject.dao.Elf;
 import com.Ironhack.LOTRProject.dto.ElfDTO;
+import com.Ironhack.LOTRProject.enums.RaceSpecialization;
 import com.Ironhack.LOTRProject.repositories.DwarfRepository;
 import com.Ironhack.LOTRProject.repositories.ElfRepository;
 import com.Ironhack.LOTRProject.repositories.HumanRepository;
@@ -25,8 +26,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
 import java.util.List;
+
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -56,13 +57,13 @@ public class IndividualControllerTests {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
         Dwarf enano1 = new Dwarf ();
         enano1.setCharacterName("Gimli");
-        enano1.setAverageHeight("67 centrimetros");
+        enano1.setRaceSpecialization(RaceSpecialization.ARTISAN);
         enano1.setKingdom("Moria");
         enano1.setMiner(true);
         dwarfRepository.save(enano1);
         Human human1 = new Human ();
         human1.setCharacterName("Aragorn");
-        human1.setHumanRace("Montaraz");
+        human1.setRace("Montaraz");
         human1.setKingdom("Gondor");
         human1.setLineage("Dûnadan");
         humanRepository.save(human1);
@@ -89,7 +90,7 @@ public class IndividualControllerTests {
     public void postIndividualTest() throws Exception {
         ElfDTO elfo2 = new ElfDTO ();
         elfo2.setCharacterName("Thranduil");
-        elfo2.setMaxAge(3000);
+        elfo2.setLongevity(3000);
         elfo2.setKingdom("Bosque prohibido");
         elfo2.setElfRace("Sylvano");
         ObjectMapper objectMapper = new ObjectMapper();
@@ -103,7 +104,7 @@ public class IndividualControllerTests {
         Elf elfTestPost = elfRepository.findByCharacterName("Thranduil");
         Assertions.assertEquals(elfTestPost.getElfRace(), elfo2.getElfRace());
         Assertions.assertEquals(elfTestPost.getKingdom(), elfo2.getKingdom());
-        Assertions.assertEquals(elfTestPost.getMaxAge(), elfo2.getMaxAge());
+        Assertions.assertEquals(elfTestPost.getMaxAge(), elfo2.getLongevity());
         Assertions.assertEquals(elfTestPost.getCharacterName(), elfo2.getCharacterName());
         elfRepository.delete(elfTestPost);
     }
@@ -115,12 +116,4 @@ public class IndividualControllerTests {
         List lista = individualRepository.findAll();
         Assertions.assertEquals (lista.size(), 2);
     }
-
-
-
-
-
-
-
-
 }

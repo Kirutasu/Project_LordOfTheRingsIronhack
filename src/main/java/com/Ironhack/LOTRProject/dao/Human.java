@@ -1,7 +1,6 @@
 package com.Ironhack.LOTRProject.dao;
 
 import lombok.Data;
-
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +9,7 @@ import javax.persistence.*;
 public class Human extends Individual {
 
     @Column
-    private String humanRace;
+    private String race;
 
     @Column
     private String kingdom;

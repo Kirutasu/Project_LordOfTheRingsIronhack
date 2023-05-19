@@ -1,6 +1,5 @@
 package com.Ironhack.LOTRProject.controllerTestIT;
 
-
 import com.Ironhack.LOTRProject.repositories.EventsRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;

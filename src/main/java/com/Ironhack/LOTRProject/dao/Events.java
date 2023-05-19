@@ -1,9 +1,9 @@
 package com.Ironhack.LOTRProject.dao;
 
 import lombok.Data;
-
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,6 +20,9 @@ public class Events {
 
     @Column
     private Date dateEvent;
+
+    @OneToMany
+    private List<Individual> participants;
 
 
 

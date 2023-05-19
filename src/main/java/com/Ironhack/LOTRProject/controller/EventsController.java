@@ -1,13 +1,13 @@
 package com.Ironhack.LOTRProject.controller;
 
 import com.Ironhack.LOTRProject.dto.ElfDTO;
+import com.Ironhack.LOTRProject.dto.EventParticipantsDTO;
 import com.Ironhack.LOTRProject.dto.EventsDTO;
+import com.Ironhack.LOTRProject.exceptions.EventNotFoundException;
 import com.Ironhack.LOTRProject.service.EventsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/events")
@@ -25,7 +25,6 @@ public class EventsController {
     public ResponseEntity getAllEvents() {
         return ResponseEntity.ok(eventService.getAllEvents());
     }
-//todo postman de todas estas
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteEvent(@PathVariable int id) {
@@ -33,7 +32,7 @@ public class EventsController {
     }
 
     @PatchMapping ("/patchEvent/eventName/{id}/{eventName}")
-    public ResponseEntity<EventsDTO> patchEventName (@PathVariable int id, @PathVariable String eventName) {
+    public ResponseEntity patchEventName (@PathVariable int id, @PathVariable String eventName) throws EventNotFoundException {
         return ResponseEntity.ok(eventService.patchEventName(id, eventName));
     }
 
@@ -41,4 +40,10 @@ public class EventsController {
     public ResponseEntity<EventsDTO> updateEvent(@RequestBody EventsDTO eventsDTO) {
         return ResponseEntity.ok(eventService.updateEvent(eventsDTO));
     }
+
+    @PostMapping ("/addParticipantToEvent")
+    public ResponseEntity<EventsDTO> addElfsToEvent (EventParticipantsDTO eventParticipantsDTO) {
+        return ResponseEntity.ok(eventService.addElfsToEvent(eventParticipantsDTO));
+    }
+
 }

@@ -1,7 +1,6 @@
 package com.Ironhack.LOTRProject.dao;
 
 import lombok.Data;
-
 import javax.persistence.*;
 
 @Entity

@@ -3,6 +3,7 @@ package com.Ironhack.LOTRProject.serviceTestUT;
 import com.Ironhack.LOTRProject.dao.Dwarf;
 import com.Ironhack.LOTRProject.dao.Elf;
 import com.Ironhack.LOTRProject.dao.Human;
+import com.Ironhack.LOTRProject.enums.RaceSpecialization;
 import com.Ironhack.LOTRProject.repositories.DwarfRepository;
 import com.Ironhack.LOTRProject.repositories.ElfRepository;
 import com.Ironhack.LOTRProject.repositories.HumanRepository;
@@ -13,10 +14,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,12 +45,12 @@ public class IndividualServiceTests {
         List listaHuman = new ArrayList();
         Dwarf enano1 = new Dwarf ();
         enano1.setCharacterName("Gimli");
-        enano1.setAverageHeight("67 centrimetros");
+        enano1.setRaceSpecialization(RaceSpecialization.ARTISAN);
         enano1.setKingdom("Moria");
         enano1.setMiner(true);
         Human human1 = new Human ();
         human1.setCharacterName("Aragorn");
-        human1.setHumanRace("Montaraz");
+        human1.setRace("Montaraz");
         human1.setKingdom("Gondor");
         human1.setLineage("Dûnadan");
         Elf elfo1 = new Elf ();

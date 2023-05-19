@@ -1,7 +1,9 @@
 package com.Ironhack.LOTRProject.dto;
 
+import com.Ironhack.LOTRProject.dao.Individual;
 import lombok.Data;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class EventsDTO {
@@ -13,6 +15,8 @@ public class EventsDTO {
     private String eventName;
 
     private Date dateEvent;
+
+    private List<Individual> participants;
 
 
 }
