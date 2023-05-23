@@ -11,6 +11,7 @@ import com.Ironhack.LOTRProject.repositories.HumanRepository;
 import com.Ironhack.LOTRProject.repositories.IndividualRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -69,13 +70,20 @@ public class IndividualControllerTests {
         humanRepository.save(human1);
         Elf elfo1 = new Elf ();
         elfo1.setCharacterName("Legolas");
-        elfo1.setMaxAge(2500);
+        elfo1.setLongevity(2500);
         elfo1.setKingdom("Bosque prohibido");
         elfo1.setElfRace("Sylvano");
         elfo1.setRaceSpecialization(RaceSpecialization.MAGIC_RESISTANT);
         elfRepository.save(elfo1);
     }
 // todo Aftereach? todos test juntos peta
+    @AfterEach
+    public void tearDown () {
+        elfRepository.deleteAll();
+        dwarfRepository.deleteAll();
+        humanRepository.deleteAll();
+        individualRepository.deleteAll();
+    }
     @Test
     public void getAllTest() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/individual/all"))//permite lanzar querys, tipo get o la que sea
@@ -105,16 +113,18 @@ public class IndividualControllerTests {
         Elf elfTestPost = elfRepository.findByCharacterName("Thranduil");
         Assertions.assertEquals(elfTestPost.getElfRace(), elfo2.getElfRace());
         Assertions.assertEquals(elfTestPost.getKingdom(), elfo2.getKingdom());
-        Assertions.assertEquals(elfTestPost.getMaxAge(), elfo2.getLongevity());
+        Assertions.assertEquals(elfTestPost.getLongevity(), elfo2.getLongevity());
         Assertions.assertEquals(elfTestPost.getCharacterName(), elfo2.getCharacterName());
         elfRepository.delete(elfTestPost);
     }
-    //todo resto de posts!
+    //todo resto de tests de posts!
     @Test
     public void deleteIndividualTest() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.delete("/individual/1"))
+        int size = individualRepository.findAll().size();
+        int id = individualRepository.findAll().get(0).getIndividual_id();
+        this.mockMvc.perform(MockMvcRequestBuilders.delete("/individual/"+id))
                 .andExpect(MockMvcResultMatchers.status().isOk());
         List lista = individualRepository.findAll();
-        Assertions.assertEquals (lista.size(), 2);
+        Assertions.assertEquals (lista.size(), (size-1));
     }
 }

@@ -33,14 +33,13 @@ public class IndividualService {
     public IndividualDTO addIndividual (IndividualDTO individualDTO) {
         Individual individual = new Individual();
         individual.setCharacterName(individualDTO.getCharacterName());
-        //todo esta linea borrar? individual = individualRepository.save(individual);
         if (individualDTO instanceof ElfDTO) {
           ElfDTO elfDto = (ElfDTO) individualDTO;
           Elf elf = new Elf ();
           elf.setIndividual_id(individual.getIndividual_id());
           elf.setCharacterName(individual.getCharacterName());
           elf.setKingdom(elfDto.getKingdom());
-          elf.setMaxAge(elfDto.getLongevity());
+          elf.setLongevity(elfDto.getLongevity());
           elf.setElfRace(elfDto.getElfRace());
           elf.setRaceSpecialization(elfDto.getRaceSpecialization());
           elfRepository.save(elf);
@@ -70,7 +69,6 @@ public class IndividualService {
         }
         return individualDTO;
     }
-    // todo human
 
     public List getAll () {
         List lista = new ArrayList();

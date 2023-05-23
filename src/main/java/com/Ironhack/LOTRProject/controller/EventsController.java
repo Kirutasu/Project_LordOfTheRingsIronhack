@@ -1,6 +1,5 @@
 package com.Ironhack.LOTRProject.controller;
 
-import com.Ironhack.LOTRProject.dto.ElfDTO;
 import com.Ironhack.LOTRProject.dto.EventParticipantsDTO;
 import com.Ironhack.LOTRProject.dto.EventsDTO;
 import com.Ironhack.LOTRProject.exceptions.EventNotFoundException;

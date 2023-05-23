@@ -55,7 +55,7 @@ public class IndividualServiceTests {
         human1.setLineage("Dûnadan");
         Elf elfo1 = new Elf ();
         elfo1.setCharacterName("Legolas");
-        elfo1.setMaxAge(2500);
+        elfo1.setLongevity(2500);
         elfo1.setKingdom("Bosque prohibido");
         elfo1.setElfRace("Sylvano");
         elfo1.setRaceSpecialization(RaceSpecialization.MAGIC_RESISTANT);
@@ -71,6 +71,21 @@ public class IndividualServiceTests {
         Mockito.verify(humanRepository, Mockito.times(1)).findAll();
         Mockito.verify(dwarfRepository, Mockito.times(1)).findAll();
     }
-//todo algun test mas UT? de event tb?
+//todo algun test mas UT
+    // todo this
+
+    /*
+    @Test
+       public List getAllDwarfs () {
+        List lista = new ArrayList();
+        lista.addAll(dwarfRepository.findAll());
+        return lista;
+    }
+
+    public int deleteIndividual (int id) {
+        individualRepository.deleteById(id);
+        return id;
+    }
+     */
 
 }

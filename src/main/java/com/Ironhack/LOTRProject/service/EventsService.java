@@ -19,7 +19,6 @@ public class EventsService {
 
     @Autowired
     private EventsRepository eventsRepository;
-
     @Autowired
     private ElfRepository elfRepository;
 
@@ -89,4 +88,50 @@ public class EventsService {
         return null;
     }
     // todo haz para dwarf y para Human
+
+/*
+    public EventsDTO addDwarfsToEvent (EventParticipantsDTO eventParticipantsDTO) {
+        if (eventsRepository.findById(eventParticipantsDTO.getId_event()).isPresent()) {
+            Events eventOnList = eventsRepository.findById(eventParticipantsDTO.getId_event()).get();
+            if (elfRepository.findById(eventParticipantsDTO.getId_individual()).isPresent()) {
+                Elf elfOnList = elfRepository.findById(eventParticipantsDTO.getId_individual()).get();
+                eventOnList.getParticipants().add(elfOnList);
+                eventsRepository.save(eventOnList);
+                EventsDTO eventsDTOOnList = new EventsDTO();
+                eventsDTOOnList.setId(eventOnList.getId());
+                eventsDTOOnList.setEventType(eventOnList.getEventType());
+                eventsDTOOnList.setEventName(eventOnList.getEventName());
+                eventsDTOOnList.setDateEvent(eventOnList.getDateEvent());
+                eventsDTOOnList.setParticipants(eventOnList.getParticipants());
+                return eventsDTOOnList;
+            }
+        }
+        return null;
+    }
+
+ */
+
+/*
+
+
+    public EventsDTO addHumansToEvent (EventParticipantsDTO eventParticipantsDTO) {
+        if (eventsRepository.findById(eventParticipantsDTO.getId_event()).isPresent()) {
+            Events eventOnList = eventsRepository.findById(eventParticipantsDTO.getId_event()).get();
+            if (elfRepository.findById(eventParticipantsDTO.getId_individual()).isPresent()) {
+                Elf elfOnList = elfRepository.findById(eventParticipantsDTO.getId_individual()).get();
+                eventOnList.getParticipants().add(elfOnList);
+                eventsRepository.save(eventOnList);
+                EventsDTO eventsDTOOnList = new EventsDTO();
+                eventsDTOOnList.setId(eventOnList.getId());
+                eventsDTOOnList.setEventType(eventOnList.getEventType());
+                eventsDTOOnList.setEventName(eventOnList.getEventName());
+                eventsDTOOnList.setDateEvent(eventOnList.getDateEvent());
+                eventsDTOOnList.setParticipants(eventOnList.getParticipants());
+                return eventsDTOOnList;
+            }
+        }
+        return null;
+    }
+ */
+
 }

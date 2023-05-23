@@ -14,7 +14,7 @@ public class ElfDTO extends IndividualDTO {
     private String kingdom;
     @Min(1)
     @Max(10000)
-    private int Longevity;
+    private int longevity;
     @NotEmpty
     private String elfRace;
     @NotEmpty
