@@ -40,9 +40,20 @@ public class EventsController {
         return ResponseEntity.ok(eventService.updateEvent(eventsDTO));
     }
 
-    @PostMapping ("/addParticipantToEvent")
+    @PostMapping ("/addElfToEvent")
     public ResponseEntity<EventsDTO> addElfsToEvent (@RequestBody EventParticipantsDTO eventParticipantsDTO) {
         return ResponseEntity.ok(eventService.addElfsToEvent(eventParticipantsDTO));
+    }
+    //todo addElfToEvent?
+
+    @PostMapping ("/addDwarfToEvent")
+    public ResponseEntity<EventsDTO> addDwarfToEvent (@RequestBody EventParticipantsDTO eventParticipantsDTO) {
+        return ResponseEntity.ok(eventService.addDwarfsToEvent(eventParticipantsDTO));
+    }
+
+    @PostMapping ("/addHumanToEvent")
+    public ResponseEntity<EventsDTO> addHumanToEvent (@RequestBody EventParticipantsDTO eventParticipantsDTO) {
+        return ResponseEntity.ok(eventService.addHumansToEvent(eventParticipantsDTO));
     }
 
 }

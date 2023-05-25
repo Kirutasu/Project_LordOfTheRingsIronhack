@@ -5,6 +5,8 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+import static javax.persistence.FetchType.EAGER;
+
 @Entity
 @Data
 public class Events {

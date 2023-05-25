@@ -19,4 +19,5 @@ public class Elf extends Individual {
     private String elfRace;
     @Column
     private RaceSpecialization raceSpecialization;
+
 }

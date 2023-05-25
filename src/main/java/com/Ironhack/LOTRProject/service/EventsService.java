@@ -1,16 +1,19 @@
 package com.Ironhack.LOTRProject.service;
 
+import com.Ironhack.LOTRProject.dao.Dwarf;
 import com.Ironhack.LOTRProject.dao.Elf;
+import com.Ironhack.LOTRProject.dao.Human;
 import com.Ironhack.LOTRProject.dto.EventParticipantsDTO;
 import com.Ironhack.LOTRProject.dto.EventsDTO;
 import com.Ironhack.LOTRProject.dao.Events;
 import com.Ironhack.LOTRProject.exceptions.EventNotFoundException;
+import com.Ironhack.LOTRProject.repositories.DwarfRepository;
 import com.Ironhack.LOTRProject.repositories.ElfRepository;
 import com.Ironhack.LOTRProject.repositories.EventsRepository;
+import com.Ironhack.LOTRProject.repositories.HumanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +24,10 @@ public class EventsService {
     private EventsRepository eventsRepository;
     @Autowired
     private ElfRepository elfRepository;
+    @Autowired
+    private DwarfRepository dwarfRepository;
+    @Autowired
+    private HumanRepository humanRepository;
 
     public EventsDTO addEvent (EventsDTO eventsDTO) {
         Events event = new Events();
@@ -87,16 +94,14 @@ public class EventsService {
         }
         return null;
     }
-    // todo haz para dwarf y para Human
 
-/*
     public EventsDTO addDwarfsToEvent (EventParticipantsDTO eventParticipantsDTO) {
         if (eventsRepository.findById(eventParticipantsDTO.getId_event()).isPresent()) {
             Events eventOnList = eventsRepository.findById(eventParticipantsDTO.getId_event()).get();
-            if (elfRepository.findById(eventParticipantsDTO.getId_individual()).isPresent()) {
-                Elf elfOnList = elfRepository.findById(eventParticipantsDTO.getId_individual()).get();
-                eventOnList.getParticipants().add(elfOnList);
-                eventsRepository.save(eventOnList);
+            if (dwarfRepository.findById(eventParticipantsDTO.getId_individual()).isPresent()) {
+                Dwarf dwarfOnList = dwarfRepository.findById(eventParticipantsDTO.getId_individual()).get();
+                eventOnList.getParticipants().add(dwarfOnList);
+                dwarfRepository.save(dwarfOnList);
                 EventsDTO eventsDTOOnList = new EventsDTO();
                 eventsDTOOnList.setId(eventOnList.getId());
                 eventsDTOOnList.setEventType(eventOnList.getEventType());
@@ -108,18 +113,13 @@ public class EventsService {
         }
         return null;
     }
-
- */
-
-/*
-
 
     public EventsDTO addHumansToEvent (EventParticipantsDTO eventParticipantsDTO) {
         if (eventsRepository.findById(eventParticipantsDTO.getId_event()).isPresent()) {
             Events eventOnList = eventsRepository.findById(eventParticipantsDTO.getId_event()).get();
-            if (elfRepository.findById(eventParticipantsDTO.getId_individual()).isPresent()) {
-                Elf elfOnList = elfRepository.findById(eventParticipantsDTO.getId_individual()).get();
-                eventOnList.getParticipants().add(elfOnList);
+            if (humanRepository.findById(eventParticipantsDTO.getId_individual()).isPresent()) {
+                Human humanOnList = humanRepository.findById(eventParticipantsDTO.getId_individual()).get();
+                eventOnList.getParticipants().add(humanOnList);
                 eventsRepository.save(eventOnList);
                 EventsDTO eventsDTOOnList = new EventsDTO();
                 eventsDTOOnList.setId(eventOnList.getId());
@@ -132,6 +132,4 @@ public class EventsService {
         }
         return null;
     }
- */
-
 }

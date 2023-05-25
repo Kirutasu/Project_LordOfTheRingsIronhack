@@ -97,7 +97,15 @@ public class IndividualService {
     }
 
     public int deleteIndividual (int id) {
-        individualRepository.deleteById(id);
+        if (elfRepository.findById(id).isPresent()) {
+            elfRepository.deleteById(id);
+        }
+        if (dwarfRepository.findById(id).isPresent()) {
+            dwarfRepository.deleteById(id);
+        }
+        if (humanRepository.findById(id).isPresent()) {
+            humanRepository.deleteById(id);
+        }
         return id;
     }
 }
