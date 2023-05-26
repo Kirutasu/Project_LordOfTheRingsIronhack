@@ -22,6 +22,5 @@ public class LOTRExceptionHandler {
     public ResponseEntity eventNotFoundExceptionHandler (EventNotFoundException exception) {
         return new ResponseEntity(exception.getMessage(), HttpStatus.NO_CONTENT);
     }
-    //todo no salta mensaje
 
 }

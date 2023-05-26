@@ -76,7 +76,6 @@ public class IndividualControllerTests {
         elfo1.setRaceSpecialization(RaceSpecialization.MAGIC_RESISTANT);
         elfRepository.save(elfo1);
     }
-// todo Aftereach? todos test juntos peta
     @AfterEach
     public void tearDown () {
         elfRepository.deleteAll();
@@ -105,7 +104,6 @@ public class IndividualControllerTests {
         ObjectMapper objectMapper = new ObjectMapper();
         String elfoJson = objectMapper.writeValueAsString(elfo2);
         System.out.println(elfoJson);
-        //TODO String elfoJson = "{\"employeeId\": \"1234\", \"department\": \"Auditory\", \"name\": \"The Good Doctor\", \"Status\": \"ON\" }";
         this.mockMvc.perform(MockMvcRequestBuilders.post("/individual/addElf")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(elfoJson))

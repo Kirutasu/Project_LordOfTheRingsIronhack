@@ -41,7 +41,6 @@ public class EventsServiceTests {
        EventsDTO eventsDTO = eventsService.patchEventName(2,"Asalto en Amon Hen");
        Assertions.assertEquals(eventsDTO.getEventName(),"Asalto en Amon Hen");
    }
-    //TODO test UT EventsService
     @Test
     public void getAllEventsTest () {
        List <Events> lista = new ArrayList();
