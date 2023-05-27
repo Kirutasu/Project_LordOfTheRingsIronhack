@@ -32,8 +32,8 @@ public class EventsController {
         return ResponseEntity.ok(eventService.deleteEvent(id));
     }
 
-    @PatchMapping ("/patchEvent/eventName/{id}/{eventName}")
-    public ResponseEntity patchEventName (@PathVariable int id, @PathVariable String eventName) throws EventNotFoundException {
+    @PatchMapping("/patchEvent/eventName/{id}/{eventName}")
+    public ResponseEntity patchEventName(@PathVariable int id, @PathVariable String eventName) throws EventNotFoundException {
         return ResponseEntity.ok(eventService.patchEventName(id, eventName));
     }
 
@@ -42,19 +42,18 @@ public class EventsController {
         return ResponseEntity.ok(eventService.updateEvent(eventsDTO));
     }
 
-    @PostMapping ("/addElfToEvent")
-    public ResponseEntity<EventsDTO> addElfsToEvent (@RequestBody EventParticipantsDTO eventParticipantsDTO) {
+    @PostMapping("/addElfToEvent")
+    public ResponseEntity<EventsDTO> addElfsToEvent(@RequestBody EventParticipantsDTO eventParticipantsDTO) {
         return ResponseEntity.ok(eventService.addElfsToEvent(eventParticipantsDTO));
     }
-    //todo addElfToEvent?
 
-    @PostMapping ("/addDwarfToEvent")
-    public ResponseEntity<EventsDTO> addDwarfToEvent (@RequestBody EventParticipantsDTO eventParticipantsDTO) {
+    @PostMapping("/addDwarfToEvent")
+    public ResponseEntity<EventsDTO> addDwarfToEvent(@RequestBody EventParticipantsDTO eventParticipantsDTO) {
         return ResponseEntity.ok(eventService.addDwarfsToEvent(eventParticipantsDTO));
     }
 
-    @PostMapping ("/addHumanToEvent")
-    public ResponseEntity<EventsDTO> addHumanToEvent (@RequestBody EventParticipantsDTO eventParticipantsDTO) {
+    @PostMapping("/addHumanToEvent")
+    public ResponseEntity<EventsDTO> addHumanToEvent(@RequestBody EventParticipantsDTO eventParticipantsDTO) {
         return ResponseEntity.ok(eventService.addHumansToEvent(eventParticipantsDTO));
     }
 

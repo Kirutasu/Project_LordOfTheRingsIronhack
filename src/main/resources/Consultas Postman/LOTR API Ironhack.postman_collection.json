@@ -1,0 +1,638 @@
+{
+	"info": {
+		"_postman_id": "f3077c4d-35fc-4eac-896c-96de30e8ae2d",
+		"name": "LOTR API Ironhack",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26879586"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Kirutasu\",\n    \"password\": \"Tolkiendilli\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST addElf",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"characterName\": \"Legolas\",\n    \"kingdom\": \"Rivendell\",\n    \"longevity\": 2500,\n    \"elfRace\": \"Sindarin\",\n    \"raceSpecialization\": \"INTELIGENT\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/individual/addElf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"individual",
+						"addElf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST addDwarf",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"characterName\": \"Gimli\",\n    \"raceSpecialization\": \"ARTISAN\",\n    \"kingdom\": \"Moria\",\n    \"miner\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/individual/addDwarf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"individual",
+						"addDwarf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST addHuman",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"characterName\": \"Aragorn\",\n    \"raceSpecialization\": \"TRADE_MASTER\",\n    \"kingdom\": \"Gondor\",\n    \"lineage\": \"Dûnadan\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/individual/addHuman",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"individual",
+						"addHuman"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Individuals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/individual/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"individual",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Elfs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/individual/allElfs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"individual",
+						"allElfs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Dwarfs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/individual/allDwarfs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"individual",
+						"allDwarfs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get AllHumans",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/individual/allHumans",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"individual",
+						"allHumans"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE individual by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/individual/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"individual",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST addEvent",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"eventType\": \"Batalla\",\n    \"eventName\": \"Batalla del Abismo de Helm\",\n    \"dateEvent\": \"3018-03-03\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/events/addEvent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events",
+						"addEvent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST addElfToEvent",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_event\": 1,\n    \"id_individual\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/events/addElfToEvent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events",
+						"addElfToEvent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST addDwarfToEvent",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_event\": 1,\n    \"id_individual\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/events/addDwarfToEvent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events",
+						"addDwarfToEvent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST addHumanToEvent",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_event\": 1,\n    \"id_individual\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/events/addHumanToEvent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events",
+						"addHumanToEvent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all events",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/events/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Update Event",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"eventType\": \"Miscelanea\",\n    \"eventName\": \"Formacion de la comunidad del Anillo\",\n    \"dateEvent\": \"3018-03-03T00:00:00.000+00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/events/updateEvent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events",
+						"updateEvent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Event Name",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/events/patchEvent/eventName/1/Batalla de Azanulbizar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events",
+						"patchEvent",
+						"eventName",
+						"1",
+						"Batalla de Azanulbizar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Get \"EventNofFound\" exception",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/events/patchEvent/eventName/10000/Batalla de Azanulbizar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"events",
+						"patchEvent",
+						"eventName",
+						"10000",
+						"Batalla de Azanulbizar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get \"ASDF\" exception",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLaXJ1dGFzdSIsImV4cCI6MTY4NTIwNzUwMywiaWF0IjoxNjg1MTcxNTAzfQ.8AUbxSCR1Obbuy0QUXWqArm4uDJX4YAN82dBFFak2NzxGeC2RETDTyZ0bVUVoNhLZMpd2O5TKkkdri_kSxHUrQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/individual/ASDF",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"individual",
+						"ASDF"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

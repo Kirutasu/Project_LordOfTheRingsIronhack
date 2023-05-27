@@ -1,6 +1,7 @@
 package com.Ironhack.LOTRProject.models;
 
 import lombok.Data;
+
 import java.util.Date;
 
 @Data

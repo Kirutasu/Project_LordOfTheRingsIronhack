@@ -18,7 +18,4 @@ public class DwarfDTO extends IndividualDTO {
     private boolean miner;
 
 
-
-
-
 }

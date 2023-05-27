@@ -1,11 +1,8 @@
 package com.Ironhack.LOTRProject.dao;
 
 import lombok.Data;
+
 import javax.persistence.*;
-
-import java.util.List;
-
-import static javax.persistence.FetchType.EAGER;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -13,7 +10,7 @@ import static javax.persistence.FetchType.EAGER;
 public class Individual {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int individual_id;
 
     @Column

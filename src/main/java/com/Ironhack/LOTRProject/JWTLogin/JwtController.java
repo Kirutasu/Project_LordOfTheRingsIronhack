@@ -21,6 +21,7 @@ public class JwtController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private TokenManager tokenManager;
+
     @PostMapping("/token")
     public ResponseEntity<String> createToken(@RequestBody JwtRequestData requestData) throws Exception {
         try {

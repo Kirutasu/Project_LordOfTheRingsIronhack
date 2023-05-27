@@ -9,6 +9,4 @@ public class IndividualDTO {
     private String characterName;
 
 
-
-
 }

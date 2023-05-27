@@ -32,16 +32,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
+
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws
             Exception {
         return super.authenticationManagerBean();
     }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable() // desabilitamos csrf
-                .authorizeRequests().antMatchers(HttpMethod.POST,"/login/token").permitAll()
+                .authorizeRequests().antMatchers(HttpMethod.POST, "/login/token").permitAll()
                 //autorizo request al post sobre Login/token
                 .and()
                 .authorizeRequests()

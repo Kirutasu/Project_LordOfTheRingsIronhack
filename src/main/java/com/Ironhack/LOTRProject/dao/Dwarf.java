@@ -2,10 +2,13 @@ package com.Ironhack.LOTRProject.dao;
 
 import com.Ironhack.LOTRProject.enums.RaceSpecialization;
 import lombok.Data;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@PrimaryKeyJoinColumn(name ="id")
+@PrimaryKeyJoinColumn(name = "id")
 @Data
 public class Dwarf extends Individual {
 
@@ -17,9 +20,6 @@ public class Dwarf extends Individual {
 
     @Column
     private boolean miner;
-
-
-
 
 
 }

@@ -13,7 +13,4 @@ public class Dwarf extends Individual {
     private boolean miner;
 
 
-
-
-
 }

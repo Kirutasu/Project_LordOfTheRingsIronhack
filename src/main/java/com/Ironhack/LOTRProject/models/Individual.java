@@ -11,6 +11,4 @@ public class Individual {
     private String characterName;
 
 
-
-
 }
