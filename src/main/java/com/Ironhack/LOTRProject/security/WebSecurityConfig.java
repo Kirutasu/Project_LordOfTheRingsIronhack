@@ -42,16 +42,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable() // desabilitamos csrf
+        http.csrf().disable() // deshabilito csrf
                 .authorizeRequests().antMatchers(HttpMethod.POST, "/login/token").permitAll()
                 //autorizo request al post sobre Login/token
                 .and()
                 .authorizeRequests()
-                // autorizo otras request pero tienen que estar autenticadas
+                // autorizo otras request, pero tienen que estar todas autenticadas
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
-    } //añadimos el FilterBefore, antes de procesar la request
+    } //se añade el FilterBefore, antes de procesar la request
 
 }

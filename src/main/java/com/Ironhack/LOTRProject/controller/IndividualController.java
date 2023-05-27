@@ -35,7 +35,6 @@ public class IndividualController {
     public ResponseEntity getAll() {
         return ResponseEntity.ok(individualService.getAll());
     }
-    //TODO  postman get All elfs, all humans, all dwarfs CHECK
 
     @GetMapping("/allElfs")
     public ResponseEntity getAllElfs() {

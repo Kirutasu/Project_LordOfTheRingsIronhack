@@ -93,7 +93,6 @@ public class EventsControllerTests {
         Assertions.assertEquals(((LinkedHashMap) eventsLista.get(1)).get("eventType"), events2.getEventType());
     }
 
-    //todo alguno+ test de events
     @Test
     public void deleteEvent() throws Exception {
         int id = eventsRepository.findAll().get(0).getId();

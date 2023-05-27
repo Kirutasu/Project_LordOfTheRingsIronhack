@@ -120,7 +120,7 @@ public class IndividualControllerTests {
         elfRepository.delete(elfTestPost);
     }
 
-    //todo resto de tests de posts!
+    //todo se puede ampliar con el resto de tests de posts!
     @Test
     public void deleteIndividualTest() throws Exception {
         int size = individualRepository.findAll().size();

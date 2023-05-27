@@ -73,7 +73,7 @@ public class IndividualServiceTests {
         Mockito.verify(dwarfRepository, Mockito.times(1)).findAll();
     }
 
-    //todo improve: algun test mas UT
+    //todo future update: algún test mas UT
     /*
     @Test
        public List getAllDwarfs () {
