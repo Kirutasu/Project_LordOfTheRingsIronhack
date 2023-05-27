@@ -1,8 +1,8 @@
 package com.Ironhack.LOTRProject.controllerTestIT;
 
 import com.Ironhack.LOTRProject.dao.Dwarf;
-import com.Ironhack.LOTRProject.dao.Human;
 import com.Ironhack.LOTRProject.dao.Elf;
+import com.Ironhack.LOTRProject.dao.Human;
 import com.Ironhack.LOTRProject.dto.ElfDTO;
 import com.Ironhack.LOTRProject.enums.RaceSpecialization;
 import com.Ironhack.LOTRProject.repositories.DwarfRepository;
@@ -27,6 +27,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
 import java.util.List;
 
 
@@ -56,33 +57,35 @@ public class IndividualControllerTests {
     @BeforeEach
     public void setup() throws Exception {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
-        Dwarf enano1 = new Dwarf ();
+        Dwarf enano1 = new Dwarf();
         enano1.setCharacterName("Gimli");
         enano1.setRaceSpecialization(RaceSpecialization.ARTISAN);
         enano1.setKingdom("Moria");
         enano1.setMiner(true);
         dwarfRepository.save(enano1);
-        Human human1 = new Human ();
+        Human human1 = new Human();
         human1.setCharacterName("Aragorn");
         human1.setRaceSpecialization(RaceSpecialization.TRADE_MASTER);
         human1.setKingdom("Gondor");
         human1.setLineage("Dûnadan");
         humanRepository.save(human1);
-        Elf elfo1 = new Elf ();
+        Elf elfo1 = new Elf();
         elfo1.setCharacterName("Legolas");
         elfo1.setLongevity(2500);
-        elfo1.setKingdom("Bosque prohibido");
+        elfo1.setKingdom("Bosque de Mirkwood");
         elfo1.setElfRace("Sylvano");
         elfo1.setRaceSpecialization(RaceSpecialization.MAGIC_RESISTANT);
         elfRepository.save(elfo1);
     }
+
     @AfterEach
-    public void tearDown () {
+    public void tearDown() {
         elfRepository.deleteAll();
         dwarfRepository.deleteAll();
         humanRepository.deleteAll();
         individualRepository.deleteAll();
     }
+// tenemos previamente preparados 3 individuos, uno por raza, que borraremos tras cada test
     @Test
     public void getAllTest() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/individual/all"))//permite lanzar querys, tipo get o la que sea
@@ -90,16 +93,17 @@ public class IndividualControllerTests {
                 .andReturn();// 1 misma orden (mira que esta peticion "postman" lance un codigo 200 OK)
         String responseBody = result.getResponse().getContentAsString();
         ObjectMapper objectMapper = new ObjectMapper();
-        List elements = objectMapper.readValue(responseBody, new TypeReference<List>(){});
-        Assertions.assertEquals(elements.size(),3);
+        List elements = objectMapper.readValue(responseBody, new TypeReference<List>() {
+        });
+        Assertions.assertEquals(elements.size(), 3);
     }
 
     @Test
     public void postIndividualTest() throws Exception {
-        ElfDTO elfo2 = new ElfDTO ();
+        ElfDTO elfo2 = new ElfDTO();
         elfo2.setCharacterName("Thranduil");
         elfo2.setLongevity(3000);
-        elfo2.setKingdom("Bosque prohibido");
+        elfo2.setKingdom("Bosque de Mirkwood");
         elfo2.setElfRace("Sylvano");
         ObjectMapper objectMapper = new ObjectMapper();
         String elfoJson = objectMapper.writeValueAsString(elfo2);
@@ -115,14 +119,15 @@ public class IndividualControllerTests {
         Assertions.assertEquals(elfTestPost.getCharacterName(), elfo2.getCharacterName());
         elfRepository.delete(elfTestPost);
     }
+
     //todo resto de tests de posts!
     @Test
     public void deleteIndividualTest() throws Exception {
         int size = individualRepository.findAll().size();
         int id = individualRepository.findAll().get(0).getIndividual_id();
-        this.mockMvc.perform(MockMvcRequestBuilders.delete("/individual/"+id))
+        this.mockMvc.perform(MockMvcRequestBuilders.delete("/individual/" + id))
                 .andExpect(MockMvcResultMatchers.status().isOk());
         List lista = individualRepository.findAll();
-        Assertions.assertEquals (lista.size(), (size-1));
+        Assertions.assertEquals(lista.size(), (size - 1));
     }
 }

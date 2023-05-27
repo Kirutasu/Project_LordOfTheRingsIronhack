@@ -31,36 +31,38 @@ public class EventsServiceTests {
     @Mock
     private ElfRepository elfRepository;
 
-   @Test
-    public void patchEventNameTest () throws EventNotFoundException {
-       Events event = new Events();
-       event.setId(2);
-       event.setEventName("Concilio de Elrond");
-       Mockito.when(eventsRepository.findById(2)).thenReturn(Optional.of(event));
-       Mockito.when(eventsRepository.save(event)).thenReturn(event);
-       EventsDTO eventsDTO = eventsService.patchEventName(2,"Asalto en Amon Hen");
-       Assertions.assertEquals(eventsDTO.getEventName(),"Asalto en Amon Hen");
-   }
     @Test
-    public void getAllEventsTest () {
-       List <Events> lista = new ArrayList();
-       Events evento1 = new Events();
-       evento1.setId(10);
-       evento1.setEventType("Asalto");
-       lista.add(evento1);
-       Events evento2 = new Events();
-       evento2.setId(100);
-       evento2.setEventType("Miscelanea");
-       lista.add(evento2);
-       Mockito.when(eventsService.getAllEvents()).thenReturn(lista);
-       List <Events> listaTest = eventsService.getAllEvents();
-       Assertions.assertEquals(lista.size(), listaTest.size());
-       Assertions.assertEquals(lista.get(0).getEventType(),listaTest.get(0).getEventType());
-       Assertions.assertEquals(lista.get(1).getEventType(),listaTest.get(1).getEventType());
+    public void patchEventNameTest() throws EventNotFoundException {
+        Events event = new Events();
+        event.setId(2);
+        event.setEventName("Concilio de Elrond");
+        Mockito.when(eventsRepository.findById(2)).thenReturn(Optional.of(event));
+        Mockito.when(eventsRepository.save(event)).thenReturn(event);
+        EventsDTO eventsDTO = eventsService.patchEventName(2, "Asalto en Amon Hen");
+        Assertions.assertEquals(eventsDTO.getEventName(), "Asalto en Amon Hen");
     }
+
     @Test
-    public void deleteEventTest () {
-       eventsService.deleteEvent(2);
-       Mockito.verify(eventsRepository , Mockito.times(1)).deleteById(2);
+    public void getAllEventsTest() {
+        List<Events> lista = new ArrayList();
+        Events evento1 = new Events();
+        evento1.setId(10);
+        evento1.setEventType("Asalto");
+        lista.add(evento1);
+        Events evento2 = new Events();
+        evento2.setId(100);
+        evento2.setEventType("Miscelanea");
+        lista.add(evento2);
+        Mockito.when(eventsService.getAllEvents()).thenReturn(lista);
+        List<Events> listaTest = eventsService.getAllEvents();
+        Assertions.assertEquals(lista.size(), listaTest.size());
+        Assertions.assertEquals(lista.get(0).getEventType(), listaTest.get(0).getEventType());
+        Assertions.assertEquals(lista.get(1).getEventType(), listaTest.get(1).getEventType());
+    }
+
+    @Test
+    public void deleteEventTest() {
+        eventsService.deleteEvent(2);
+        Mockito.verify(eventsRepository, Mockito.times(1)).deleteById(2);
     }
 }

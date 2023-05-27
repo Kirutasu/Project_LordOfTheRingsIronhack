@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +24,6 @@ import java.util.List;
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 public class IndividualServiceTests {
-// vamos a probar la logica del componente Individual (mockeando un get all y dando una salida simulada, nos da igual
-    // lo que devuelva de base de datos
 
     @Mock
     private HumanRepository humanRepository;
@@ -39,21 +38,23 @@ public class IndividualServiceTests {
     private IndividualService individualService;
 
     @Test
-    public void getAll () {
+    // vamos a probar la logica del componente Individual (mockeando un get all y dando una salida simulada, nos da igual
+    // lo que devuelva de base de datos
+    public void getAll() {
         List listaElf = new ArrayList();
         List listaDwarf = new ArrayList();
         List listaHuman = new ArrayList();
-        Dwarf enano1 = new Dwarf ();
+        Dwarf enano1 = new Dwarf();
         enano1.setCharacterName("Gimli");
         enano1.setRaceSpecialization(RaceSpecialization.ARTISAN);
         enano1.setKingdom("Moria");
         enano1.setMiner(true);
-        Human human1 = new Human ();
+        Human human1 = new Human();
         human1.setCharacterName("Aragorn");
         human1.setRaceSpecialization(RaceSpecialization.TRADE_MASTER);
         human1.setKingdom("Gondor");
         human1.setLineage("Dûnadan");
-        Elf elfo1 = new Elf ();
+        Elf elfo1 = new Elf();
         elfo1.setCharacterName("Legolas");
         elfo1.setLongevity(2500);
         elfo1.setKingdom("Bosque prohibido");
@@ -66,14 +67,13 @@ public class IndividualServiceTests {
         Mockito.when(humanRepository.findAll()).thenReturn(listaHuman);
         Mockito.when(dwarfRepository.findAll()).thenReturn(listaDwarf);
         List listaGet = individualService.getAll();
-        Assertions.assertEquals(listaGet.size(), listaElf.size()+listaDwarf.size()+listaHuman.size());
+        Assertions.assertEquals(listaGet.size(), listaElf.size() + listaDwarf.size() + listaHuman.size());
         Mockito.verify(elfRepository, Mockito.times(1)).findAll();
         Mockito.verify(humanRepository, Mockito.times(1)).findAll();
         Mockito.verify(dwarfRepository, Mockito.times(1)).findAll();
     }
-//todo algun test mas UT
-    // todo this
 
+    //todo improve: algun test mas UT
     /*
     @Test
        public List getAllDwarfs () {

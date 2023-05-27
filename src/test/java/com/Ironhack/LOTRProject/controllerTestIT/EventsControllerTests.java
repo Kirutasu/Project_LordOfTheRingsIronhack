@@ -1,8 +1,6 @@
 package com.Ironhack.LOTRProject.controllerTestIT;
 
-import com.Ironhack.LOTRProject.dao.Elf;
 import com.Ironhack.LOTRProject.dao.Events;
-import com.Ironhack.LOTRProject.dto.ElfDTO;
 import com.Ironhack.LOTRProject.dto.EventsDTO;
 import com.Ironhack.LOTRProject.repositories.EventsRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -12,12 +10,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -49,7 +44,6 @@ public class EventsControllerTests {
     private Events events2 = new Events();
 
 
-
     @BeforeEach
     public void setup() throws Exception {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
@@ -76,7 +70,7 @@ public class EventsControllerTests {
         MvcResult addEventResult = this.mockMvc.perform(MockMvcRequestBuilders.post("/events/addEvent")
                         .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(eventJson))
-                        .andReturn();
+                .andReturn();
         String responseBody = addEventResult.getResponse().getContentAsString();
         EventsDTO eventsDTO2 = objectMapper.readValue(responseBody, eventsDTO.getClass());
         Assertions.assertEquals(eventsDTO.getEventName(), eventsDTO2.getEventName());
@@ -91,24 +85,26 @@ public class EventsControllerTests {
                 .andReturn();
         String responseBody = addEventResult.getResponse().getContentAsString();
         ObjectMapper objectMapper = new ObjectMapper();
-        List eventsLista = objectMapper.readValue(responseBody, new TypeReference<List>(){});
-        Assertions.assertEquals(((LinkedHashMap)eventsLista.get(0)).get("eventName"), events.getEventName());
-        Assertions.assertEquals(((LinkedHashMap)eventsLista.get(1)).get("eventName"), events2.getEventName());
-        Assertions.assertEquals(((LinkedHashMap)eventsLista.get(0)).get("eventType"), events.getEventType());
-        Assertions.assertEquals(((LinkedHashMap)eventsLista.get(1)).get("eventType"), events2.getEventType());
+        List eventsLista = objectMapper.readValue(responseBody, new TypeReference<List>() {
+        });
+        Assertions.assertEquals(((LinkedHashMap) eventsLista.get(0)).get("eventName"), events.getEventName());
+        Assertions.assertEquals(((LinkedHashMap) eventsLista.get(1)).get("eventName"), events2.getEventName());
+        Assertions.assertEquals(((LinkedHashMap) eventsLista.get(0)).get("eventType"), events.getEventType());
+        Assertions.assertEquals(((LinkedHashMap) eventsLista.get(1)).get("eventType"), events2.getEventType());
     }
+
     //todo alguno+ test de events
     @Test
     public void deleteEvent() throws Exception {
         int id = eventsRepository.findAll().get(0).getId();
-        MvcResult addEventResult = this.mockMvc.perform(MockMvcRequestBuilders.delete("/events/"+ id))
+        MvcResult addEventResult = this.mockMvc.perform(MockMvcRequestBuilders.delete("/events/" + id))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
         Assertions.assertEquals(eventsRepository.findAll().size(), 1);
     }
 
     @Test
-    public void PatchEventNameTest () throws Exception {
+    public void PatchEventNameTest() throws Exception {
         int id = eventsRepository.findAll().get(0).getId();
         MvcResult patchEventName = mockMvc.perform(MockMvcRequestBuilders.patch("/events/patchEvent/eventName/" + id + "/Asalto en la cima de los vientos"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
