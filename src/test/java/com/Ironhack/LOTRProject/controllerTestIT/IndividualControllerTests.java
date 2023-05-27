@@ -100,6 +100,7 @@ public class IndividualControllerTests {
 
     @Test
     public void postIndividualTest() throws Exception {
+        //este metodo comprueba el metodo postIndividual para comprober que efectivamente se añade un
         ElfDTO elfo2 = new ElfDTO();
         elfo2.setCharacterName("Thranduil");
         elfo2.setLongevity(3000);

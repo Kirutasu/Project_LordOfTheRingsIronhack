@@ -22,6 +22,7 @@ public class JwtController {
     @Autowired
     private TokenManager tokenManager;
 
+    //esta clase crea un token mediante este metodo, utilizando el username y password que le pasamos por body en la peticion
     @PostMapping("/token")
     public ResponseEntity<String> createToken(@RequestBody JwtRequestData requestData) throws Exception {
         try {

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 public class LOTRExceptionHandler {
 
+    // metodos donde no se encuentra un evento, para simplificar el mensaje que se obtiene por pantalla
+
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     @ResponseBody

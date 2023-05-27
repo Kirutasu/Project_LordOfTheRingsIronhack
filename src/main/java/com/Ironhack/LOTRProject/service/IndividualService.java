@@ -32,6 +32,8 @@ public class IndividualService {
 
 
     public IndividualDTO addIndividual(IndividualDTO individualDTO) {
+        //este metodo, previa comprobacion de la raza del individuo que queremos añadir, copia los atributos de este objeto (elfo, enano u hombre)
+        // a un nuevo individuo
         Individual individual = new Individual();
         individual.setCharacterName(individualDTO.getCharacterName());
         if (individualDTO instanceof ElfDTO) {
