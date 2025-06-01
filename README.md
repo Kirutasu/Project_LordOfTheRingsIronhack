@@ -34,12 +34,11 @@ Estructura del Proyecto
 - querys SQL
 
 Endpoints (ejemplo)
-
- GET (All individuals, Elfs, Dwarfs, Humans, Events, exception)
- POST (Add -Elf, Dwarf, Human-, AddEvent, AddRaceToEvent, 
- PUT updateEvent
- PATCH Event, exception
- DELETE individual by ID
+- GET (All individuals, Elfs, Dwarfs, Humans, Events, exception)
+- POST (Add -Elf, Dwarf, Human-, AddEvent, AddRaceToEvent, 
+- PUT updateEvent
+- PATCH Event, exception
+- DELETE individual by ID
 Probados mediante Postman
 
 Cómo Ejecutar
