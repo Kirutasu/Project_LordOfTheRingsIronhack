@@ -33,9 +33,16 @@ Estructura del Proyecto
 - json
 - querys SQL
 
-# Cómo Ejecutar
+Endpoints (ejemplo)
+GET (All individuals, Elfs, Dwarfs, Humans, Events, exception)
+POST (Add -Elf, Dwarf, Human-, AddEvent, AddRaceToEvent, 
+PUT updateEvent
+PATCH Event, exception
+DELETE individual by ID
+Probados mediante Postman
 
-1. Clona el repositorio: git clone https://github.com/Kirutasu/Project_LordOfTheRingsIronhack.git
+Cómo Ejecutar
+Clona el repositorio: git clone https://github.com/Kirutasu/Project_LordOfTheRingsIronhack.git
 Abre el proyecto en tu IDE de Java (recomendado: IntelliJ)
 Ejecuta la clase Main.java
 
